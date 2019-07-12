@@ -14,13 +14,12 @@ Abc
 Def
 # ignore this`
 
-var r1 = strings.NewReader(strings.Repeat(contents, 500))
-
 func BenchmarkParser(b *testing.B) {
-	b.ReportAllocs()
-
+	var r1 = strings.NewReader(strings.Repeat(contents, 500))
 	var results []string
 	var err error
+
+	b.ReportAllocs()
 
 	for n := 0; n < b.N; n++ {
 		results, err = reader(r1)
